@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catstagram-service
+  labels: 
+    app: catstagram
+
+spec:
+  selector:
+    app: catstagram-flask
+  ports:
+    - protocol  : TCP
+      port      : 80 # Port on Load Balancer
+      targetPort: 5000 # Port on Pod
+  type: LoadBalancer
+  #type: NodePort
